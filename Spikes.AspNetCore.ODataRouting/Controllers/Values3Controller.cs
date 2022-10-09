@@ -7,7 +7,10 @@ using Microsoft.AspNetCore.OData.Routing.Controllers;
 namespace Spikes.AspNetCore.ODataRouting.Controllers
 {
     [ODataAttributeRouting]
-    [Route("Trash")]
+    // Fails because doesn't have prefix equal
+    // to "api/odata/v{version}" that is defined
+    // when model registered.
+    [Route("Trash3")]
     public class Values3Controller : ODataController
     {
 
@@ -16,6 +19,7 @@ namespace Spikes.AspNetCore.ODataRouting.Controllers
         /// 
         /// </summary>
         /// <returns></returns>
+        [HttpGet("")]
         [HttpGet("Get")]
         [EnableQuery(PageSize = 100)]
         public IActionResult Get()

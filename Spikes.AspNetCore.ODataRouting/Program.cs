@@ -19,9 +19,10 @@ namespace Spikes.AspNetCore.ODataRouting
             builder.Services.AddControllers()
                             .AddOData(opt => opt.Count().Filter().Expand().Select().OrderBy().SetMaxTop(5)
                             .AddRouteComponents(
-                                "api/odata/",
+                                "api/odata/v{version}",
                                 catwalkModel)
-                );
+                            .EnableAttributeRouting = true
+                ); ;
 
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -47,8 +48,12 @@ namespace Spikes.AspNetCore.ODataRouting
 
             app.UseODataRouteDebug();
 
+            app.UseRouting();
             app.MapControllers();
-
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapControllers();
+            //});
 
             app.Run();
         }

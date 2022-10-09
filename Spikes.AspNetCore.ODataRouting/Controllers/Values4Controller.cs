@@ -7,9 +7,14 @@ using Microsoft.AspNetCore.OData.Routing.Controllers;
 namespace Spikes.AspNetCore.ODataRouting.Controllers
 {
     [ODataAttributeRouting]
-    // Matches convention, so works
-    //[Route("Values2")]
-    public class Values2Controller : ODataController
+    // Fails because doesn't have prefix equal
+    // to "api/odata/v{version}" that is defined
+    // when model registered.
+    // As ODataRouteComponent only affects Convention
+    // based, not Attribute based.
+    [ODataRouteComponent("api/odata/v{version}/")]
+    [Route("Trash4")]
+    public class Values4Controller : ODataController
     {
 
 

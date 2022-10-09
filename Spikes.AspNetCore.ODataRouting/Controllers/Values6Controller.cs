@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.OData.Routing.Controllers;
 namespace Spikes.AspNetCore.ODataRouting.Controllers
 {
     [ODataAttributeRouting]
-    // Matches convention, so works
-    //[Route("Values2")]
-    public class Values2Controller : ODataController
+    //Would work - except that it was registered
+    //in model with slashes....so probably making it 
+    //double length (just guessing)
+    [Route("api/odata/v{version}/Trash6")]
+    public class Values6Controller : ODataController
     {
 
 

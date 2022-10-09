@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.OData.Routing.Controllers;
 namespace Spikes.AspNetCore.ODataRouting.Controllers
 {
     [ODataAttributeRouting]
+    // Matches convention...so works
     [Route("Values1")]
     public class Values1Controller :  ODataController
     {

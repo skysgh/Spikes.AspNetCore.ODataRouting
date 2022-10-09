@@ -1,6 +1,7 @@
 ﻿using Microsoft.OData.Edm;
 using Microsoft.OData.ModelBuilder;
 using Spikes.AspNetCore.ODataRouting.Models;
+using System.Xml.Linq;
 
 namespace Spikes.AspNetCore.ODataRouting.ModelBuilders
 {
@@ -10,9 +11,12 @@ namespace Spikes.AspNetCore.ODataRouting.ModelBuilders
         {
             var builder = new ODataConventionModelBuilder();
 
-            builder.EntitySet<SomeModel>("Values1");
-            builder.EntitySet<SomeModel>("Values2");
-            builder.EntitySet<SomeModel>("Trash");
+            /*01*/builder.EntitySet<SomeModel>("Values1");
+            /*02*/builder.EntitySet<SomeModel>("Values2");
+            /*03*/builder.EntitySet<SomeModel>("Trash3");
+            /*04*/builder.EntitySet<SomeModel>("Trash4");
+            /*05*/builder.EntitySet<SomeModel>("Trash5");
+            /*06*/builder.EntitySet<SomeModel>("api/odata/v{version}/Trash6");
 
             return builder.GetEdmModel();
 
