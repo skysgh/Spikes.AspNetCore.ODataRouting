@@ -17,6 +17,8 @@ namespace Spikes.AspNetCore.ODataRouting.ModelBuilders
             /*04*/builder.EntitySet<SomeModel>("Trash4");
             /*05*/builder.EntitySet<SomeModel>("Trash5");
             /*06*/builder.EntitySet<SomeModel>("api/odata/v{version}/Trash6");
+            /*07*/builder.EntitySet<SomeModel>("SomeModuleName/Trash7");
+            /*08*/builder.EntitySet<SomeModel>("SomeModuleName_Trash8");
 
             return builder.GetEdmModel();
 
