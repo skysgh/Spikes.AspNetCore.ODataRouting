@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.OData.Query;
 using Microsoft.AspNetCore.OData.Routing.Attributes;
 using Microsoft.AspNetCore.OData.Routing.Controllers;
 using Spikes.AspNetCore.ODataRouting.Constants;
-using Spikes.AspNetCore.ODataRouting.Singleton;
+using Spikes.AspNetCore.ODataRouting.FakeDataBuilders;
 
 namespace Spikes.AspNetCore.ODataRouting.Controllers.PluginA.OData
 {
@@ -31,7 +31,7 @@ namespace Spikes.AspNetCore.ODataRouting.Controllers.PluginA.OData
     // If you forget to add this, on more than two Controllers
     // you'll get an error that the routes ("Get") conflict
     // as they both have no prefix.
-    [Route(AppAPIConstants.ODataPrefixWithSlash + AppAPIConstants.ModuleB +"/" + "Renamed5")]
+    [Route(AppAPIConstants.ODataPrefixWithSlash + AppAPIConstants.ModuleB +"/" + "RenamedB1")]
     public class ValuesB1Controller : ODataController
     {
 
@@ -45,7 +45,7 @@ namespace Spikes.AspNetCore.ODataRouting.Controllers.PluginA.OData
         [EnableQuery(PageSize = 100)]
         public IActionResult Get()
         {
-            return Ok(FakeDataBuilder.Get());
+            return Ok(FakeDataBuilderB.Get());
         }
 
 

@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OData.Query;
 
 namespace Spikes.AspNetCore.ODataRouting.Controllers.PluginA.REST
 {
@@ -20,6 +21,7 @@ namespace Spikes.AspNetCore.ODataRouting.Controllers.PluginA.REST
             _logger = logger;
         }
 
+        [EnableQuery(PageSize = 100)]
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
         {

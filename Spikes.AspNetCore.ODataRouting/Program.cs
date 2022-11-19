@@ -55,6 +55,10 @@ namespace Spikes.AspNetCore.ODataRouting
 
 
 
+            var check = 
+                builder.Services.Where(x=>x.ServiceType.Name.Contains("OData")).ToArray();
+
+
             builder.Services.AddEndpointsApiExplorer();
 
             // Note putting in routes to 

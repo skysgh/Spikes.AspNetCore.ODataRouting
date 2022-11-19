@@ -1,7 +1,7 @@
 ﻿using Microsoft.OData.Edm;
 using Microsoft.OData.ModelBuilder;
 using Spikes.AspNetCore.ODataRouting.Constants;
-using Spikes.AspNetCore.ODataRouting.Models;
+using Spikes.AspNetCore.ODataRouting.Models.ModuleA;
 using System.Xml.Linq;
 
 namespace Spikes.AspNetCore.ODataRouting.ModelBuilders
@@ -14,7 +14,7 @@ namespace Spikes.AspNetCore.ODataRouting.ModelBuilders
 
             /*01*/
             // Works, follows convention of part-part == controller name prefix 
-            builder.EntitySet<SomeModel>("ValuesB1");
+            builder.EntitySet<SomeBaseParentModel>("ValuesB1");
 
             return builder.GetEdmModel();
 

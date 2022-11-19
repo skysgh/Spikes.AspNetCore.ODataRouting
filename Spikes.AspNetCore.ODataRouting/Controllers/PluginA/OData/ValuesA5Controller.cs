@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.OData.Query;
 using Microsoft.AspNetCore.OData.Routing.Attributes;
 using Microsoft.AspNetCore.OData.Routing.Controllers;
 using Spikes.AspNetCore.ODataRouting.Constants;
-using Spikes.AspNetCore.ODataRouting.Singleton;
+using Spikes.AspNetCore.ODataRouting.FakeDataBuilders;
 
 namespace Spikes.AspNetCore.ODataRouting.Controllers.PluginA.OData
 {
@@ -30,7 +30,7 @@ namespace Spikes.AspNetCore.ODataRouting.Controllers.PluginA.OData
         [HttpGet("Get")]
         public IActionResult Get()
         {
-            return Ok(FakeDataBuilder.Get());
+            return Ok(FakeDataBuilderA.Get());
         }
 
     }

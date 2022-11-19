@@ -1,7 +1,7 @@
 ﻿using Microsoft.OData.Edm;
 using Microsoft.OData.ModelBuilder;
 using Spikes.AspNetCore.ODataRouting.Constants;
-using Spikes.AspNetCore.ODataRouting.Models;
+using Spikes.AspNetCore.ODataRouting.Models.ModuleA;
 using System.Xml.Linq;
 
 namespace Spikes.AspNetCore.ODataRouting.ModelBuilders
@@ -17,7 +17,7 @@ namespace Spikes.AspNetCore.ODataRouting.ModelBuilders
             // a) found as an odata controller (under api/odata/v{version}
             // b) acting as an Odata controller (returning odata wrapper in json)
             // c) Queryability works
-            builder.EntitySet<SomeModel>("ValuesA1");
+            builder.EntitySet<SomeBaseParentModel>("ValuesA1");
 
             /*02*/
             // Works, follows convention of part-part == controller name prefix 
@@ -25,7 +25,7 @@ namespace Spikes.AspNetCore.ODataRouting.ModelBuilders
             // a) found as an odata controller (under api/odata/v{version}
             // b) acting as an Odata controller (returning odata wrapper in json)
             // c) Queryability works
-            builder.EntitySet<SomeModel>("ValuesA2");
+            builder.EntitySet<SomeBaseParentModel>("ValuesA2");
 
             /*03*/
             // Fails, as path-part != controller name prefix
@@ -33,7 +33,7 @@ namespace Spikes.AspNetCore.ODataRouting.ModelBuilders
             // a) not found as an odata controller (under api/odata/v{version}
             // b) not acting as an Odata controller (returning odata wrapper in json)
             // c) no Queryability
-            builder.EntitySet<SomeModel>("Renamed3");
+            builder.EntitySet<SomeBaseParentModel>("Renamed3");
 
             /*04*/
             // Fails, as path-part != Controller name prefix,  
@@ -41,7 +41,7 @@ namespace Spikes.AspNetCore.ODataRouting.ModelBuilders
             // a) not found as an odata controller (under api/odata/v{version}
             // b) not acting as an Odata controller (returning odata wrapper in json)
             // c) no Queryability
-            builder.EntitySet<SomeModel>("Renamed4");
+            builder.EntitySet<SomeBaseParentModel>("Renamed4");
 
             /*05*/
             //Half Works!!!
@@ -51,7 +51,7 @@ namespace Spikes.AspNetCore.ODataRouting.ModelBuilders
             // a) listed in ~/$odata an odata controller (under api/odata/v{version}
             // b) acting as an Odata controller (returning odata wrapper in json)
             // c) no Queryability
-            builder.EntitySet<SomeModel>("Renamed5");
+            builder.EntitySet<SomeBaseParentModel>("Renamed5");
 
             /*06*/
             // Fails.
@@ -60,7 +60,7 @@ namespace Spikes.AspNetCore.ODataRouting.ModelBuilders
             // b) not acting as an Odata controller (returning odata wrapper in json)
             // c) no Queryability
             // Simply because its not following convention?
-            builder.EntitySet<SomeModel>(AppAPIConstants.ODataPrefixWithSlash + "Renamed6");
+            builder.EntitySet<SomeBaseParentModel>(AppAPIConstants.ODataPrefixWithSlash + "Renamed6");
 
             /*07*/
             //Fails.
@@ -70,7 +70,7 @@ namespace Spikes.AspNetCore.ODataRouting.ModelBuilders
             // b) not acting as an Odata controller (returning odata wrapper in json)
             // c) no Queryability
             // Simply because its not following convention?
-            builder.EntitySet<SomeModel>(AppAPIConstants.ModuleA + "/" + "Renamed7");
+            builder.EntitySet<SomeBaseParentModel>(AppAPIConstants.ModuleA + "/" + "Renamed7");
 
             /*08*/
             //Half Works.
@@ -79,7 +79,7 @@ namespace Spikes.AspNetCore.ODataRouting.ModelBuilders
             // b) acting as an Odata controller (returning odata wrapper in json)
             // c) but no Queryability
             // But messy naming (but messy) if using a dash to get around  slash:
-            builder.EntitySet<SomeModel>(AppAPIConstants.ModuleA + "-" + "Renamed8");
+            builder.EntitySet<SomeBaseParentModel>(AppAPIConstants.ModuleA + "-" + "Renamed8");
 
 
 
