@@ -1,7 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace Spikes.AspNetCore.ODataRouting.Controllers
+namespace Spikes.AspNetCore.ODataRouting.Controllers.PluginA.REST
 {
+    // Example of Standard non-ODATA
+    // Controller.
     [ApiController]
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
