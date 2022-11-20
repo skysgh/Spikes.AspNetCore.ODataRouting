@@ -43,6 +43,8 @@ namespace Spikes.AspNetCore.ODataRouting.Controllers.PluginA.OData
         [HttpGet("")]
         [HttpGet("Get")]
         [EnableQuery(PageSize = 100)]
+
+        [ApiExplorerSettings(GroupName = AppAPIConstants.PluginODataAPIsID)]
         public IActionResult Get()
         {
             return Ok(FakeDataBuilderB.Get());

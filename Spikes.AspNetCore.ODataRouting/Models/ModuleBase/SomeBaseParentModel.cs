@@ -1,6 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 
-namespace Spikes.AspNetCore.ODataRouting.Models.ModuleA
+namespace Spikes.AspNetCore.ODataRouting.Models.ModuleBase
 {
     public class SomeBaseParentModel
     {

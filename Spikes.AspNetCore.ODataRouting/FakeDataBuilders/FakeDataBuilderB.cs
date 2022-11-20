@@ -1,6 +1,4 @@
 ﻿using Microsoft.VisualBasic;
-using Spikes.AspNetCore.ODataRouting.Models;
-using Spikes.AspNetCore.ODataRouting.Models.ModuleA;
 using Spikes.AspNetCore.ODataRouting.Models.ModuleB;
 using System;
 

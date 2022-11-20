@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualBasic;
 using Spikes.AspNetCore.ODataRouting.Models;
-using Spikes.AspNetCore.ODataRouting.Models.ModuleA;
+using Spikes.AspNetCore.ODataRouting.Models.ModuleBase;
 using System;
 
 namespace Spikes.AspNetCore.ODataRouting.FakeDataBuilders

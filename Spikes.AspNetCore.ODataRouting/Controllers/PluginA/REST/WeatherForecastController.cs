@@ -1,10 +1,22 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OData.Query;
+using Spikes.AspNetCore.ODataRouting.Constants;
+using Spikes.AspNetCore.ODataRouting.Models.ModuleBase;
 
 namespace Spikes.AspNetCore.ODataRouting.Controllers.PluginA.REST
 {
-    // Example of Standard non-ODATA
-    // Controller.
+    /// <summary>
+    /// Example of Standard non-ODATA
+    /// Controller.
+    /// </summary>
+    /// <remarks>
+    /// Sexy description of the Controller
+    /// <code>
+    /// <![CDATA[
+    /// var foo = bar;
+    /// ]]>
+    /// </code>
+    /// </remarks>
     [ApiController]
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
@@ -21,8 +33,28 @@ namespace Spikes.AspNetCore.ODataRouting.Controllers.PluginA.REST
             _logger = logger;
         }
 
+        /// <summary>
+        /// Some more descriptive text...
+        /// </summary>
+        /// <remarks>
+        /// Sexy description of the Controller:
+        /// <para>
+        /// <code>
+        /// <![CDATA[
+        /// var foo = bar;
+        /// ]]>
+        /// </code>
+        /// </para>
+        /// </remarks>
+        /// <returns></returns>
+        /// <devnotes>
+        /// By default Comments On Controllers are NOT
+        /// included by Swashbuckle. unless you follw:
+        /// https://stackoverflow.com/questions/50511071/how-to-define-controller-descriptions-in-asp-net-core-swagger-swashbuckle-aspne
+        /// </devnotes>
         [EnableQuery(PageSize = 100)]
         [HttpGet(Name = "GetWeatherForecast")]
+        [ApiExplorerSettings(GroupName = AppAPIConstants.BaseRESTAPIsID)]
         public IEnumerable<WeatherForecast> Get()
         {
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast

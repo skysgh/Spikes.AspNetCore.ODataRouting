@@ -20,6 +20,8 @@ namespace Spikes.AspNetCore.ODataRouting.Controllers.PluginA.OData
     //so it fails, even if matching how it's
     // registered in the EDM model.
     [Route(AppAPIConstants.ODataPrefixWithSlash + AppAPIConstants.ModuleA + "/" + "Renamed7")]
+    //For Swagger:
+    [ApiExplorerSettings(GroupName = AppAPIConstants.BaseODataAPIsID)]
     public class ValuesA7Controller : ODataController
     {
         /// <summary>
@@ -29,6 +31,7 @@ namespace Spikes.AspNetCore.ODataRouting.Controllers.PluginA.OData
         [HttpGet("")]
         [HttpGet("Get")]
         [EnableQuery(PageSize = 100)]
+        [ApiExplorerSettings(GroupName = AppAPIConstants.BaseFailedODataAPIsID)]
         public IActionResult Get()
         {
             return Ok(FakeDataBuilderA.Get());

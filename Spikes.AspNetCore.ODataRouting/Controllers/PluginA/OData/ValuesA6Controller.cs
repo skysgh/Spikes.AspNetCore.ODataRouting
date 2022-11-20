@@ -15,6 +15,8 @@ namespace Spikes.AspNetCore.ODataRouting.Controllers.PluginA.OData
     // b) but not acting as an Odata controller (returning odata wrapper in json)
     // c) no Queryability 
     [Route(AppAPIConstants.ODataPrefixWithSlash + "Renamed6")]
+    //For Swagger:
+    [ApiExplorerSettings(GroupName = AppAPIConstants.BaseFailedODataAPIsID)]
     public class ValuesA6Controller : ODataController
     {
 

@@ -1,4 +1,4 @@
-﻿using Spikes.AspNetCore.ODataRouting.Models.ModuleA;
+﻿using Spikes.AspNetCore.ODataRouting.Models.ModuleBase;
 using System.Collections.ObjectModel;
 
 namespace Spikes.AspNetCore.ODataRouting.Models.ModuleB

@@ -1,12 +1,20 @@
+using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.AspNetCore.OData;
 using Microsoft.AspNetCore.OData.Batch;
 using Microsoft.AspNetCore.OData.Routing.Conventions;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 using Microsoft.OData.Edm;
 using Microsoft.OData.ModelBuilder;
+using Microsoft.OpenApi.Models;
 using Spikes.AspNetCore.ODataRouting.Constants;
 using Spikes.AspNetCore.ODataRouting.Conventions;
 using Spikes.AspNetCore.ODataRouting.ModelBuilders;
+using Spikes.AspNetCore.ODataRouting.Swagger.Filters;
+using Spikes.AspNetCore.ODataRouting.Swagger.json;
+using Spikes.AspNetCore.ODataRouting.Swagger.ui;
+using Swashbuckle.AspNetCore.SwaggerGen;
+using System.Buffers.Text;
 using System.Reflection;
 using System.Reflection.Emit;
 
@@ -55,6 +63,7 @@ namespace Spikes.AspNetCore.ODataRouting
 
 
 
+
             var check = 
                 builder.Services.Where(x=>x.ServiceType.Name.Contains("OData")).ToArray();
 
@@ -64,24 +73,41 @@ namespace Spikes.AspNetCore.ODataRouting
             // Note putting in routes to 
             // http://localhost/$odata
             // and 
-            // http://localhost/swagger/index.html
+            // http://localhost/{$"{AppAPIConstants.SwaggerDocRoot}/swagger/index.html
 
 
             // Learn more about configuring
             // Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-            builder.Services.AddSwaggerGen();
+
+            builder.Services
+                .AddSwaggerGen(
+                SwaggerConfigurer.BuildSwaggerGenOptions);
 
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
-                app.UseSwagger();
-                app.UseSwaggerUI();
+                app.UseSwagger(c=>
+                {
+                    //NOTE: First {} is dynamic
+                    //      Second is template token
+                    //      ...not the same thing...
+                    c.RouteTemplate = 
+                    $"{AppAPIConstants.SwaggerJSonRoot}/"+
+                    "{documentname}/swagger.json";
+                });
+
+
+                CheckManifests();
+
+                app.UseSwaggerUI(SwaggerUIConfigurer.XXX);
             }
 
 
             app.UseHttpsRedirection();
+
+            app.UseStaticFiles();
 
             //app.UseAuthorization();
 
@@ -101,6 +127,11 @@ namespace Spikes.AspNetCore.ODataRouting
             //});
 
             app.Run();
+        }
+
+        private static void CheckManifests()
+        {
+            var check3 = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceNames();
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using Microsoft.OData.Edm;
 using Microsoft.OData.ModelBuilder;
 using Spikes.AspNetCore.ODataRouting.Constants;
-using Spikes.AspNetCore.ODataRouting.Models.ModuleA;
+using Spikes.AspNetCore.ODataRouting.Models.ModuleBase;
 using System.Xml.Linq;
 
 namespace Spikes.AspNetCore.ODataRouting.ModelBuilders

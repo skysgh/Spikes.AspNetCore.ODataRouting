@@ -1,4 +1,4 @@
-namespace Spikes.AspNetCore.ODataRouting
+namespace Spikes.AspNetCore.ODataRouting.Models.ModuleBase
 {
     public class WeatherForecast
     {

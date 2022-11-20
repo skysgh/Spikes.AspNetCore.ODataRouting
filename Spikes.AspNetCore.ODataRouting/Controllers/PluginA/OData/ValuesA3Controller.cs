@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OData.Query;
 using Microsoft.AspNetCore.OData.Routing.Attributes;
 using Microsoft.AspNetCore.OData.Routing.Controllers;
+using Spikes.AspNetCore.ODataRouting.Constants;
 using Spikes.AspNetCore.ODataRouting.FakeDataBuilders;
 
 namespace Spikes.AspNetCore.ODataRouting.Controllers.PluginA.OData
@@ -27,6 +28,8 @@ namespace Spikes.AspNetCore.ODataRouting.Controllers.PluginA.OData
         [HttpGet("")]
         [HttpGet("Get")]
         [EnableQuery(PageSize = 100)]
+        //For Swagger:
+        [ApiExplorerSettings(GroupName = AppAPIConstants.BaseFailedODataAPIsID)]
         public IActionResult Get()
         {
             return Ok(FakeDataBuilderA.Get());

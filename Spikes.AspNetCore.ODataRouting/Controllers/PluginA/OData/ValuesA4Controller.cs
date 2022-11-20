@@ -20,6 +20,8 @@ namespace Spikes.AspNetCore.ODataRouting.Controllers.PluginA.OData
     // based, not Attribute based. Whatever that means.
     [ODataRouteComponent(AppAPIConstants.ODataPrefixWithSlash)]
     [Route("Renamed4")]
+    //For Swagger:
+    [ApiExplorerSettings(GroupName = AppAPIConstants.BaseFailedODataAPIsID)]
     public class ValuesA4Controller : ODataController
     {
 
