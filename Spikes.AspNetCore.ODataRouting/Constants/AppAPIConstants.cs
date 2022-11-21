@@ -34,5 +34,11 @@
         //And in general, probably best to stick to something generic.
         //so...?
         public const string SwaggerJSonRoot = "/openAPI";
+
+        public const string SwaggerFileName = "openapi.json";//swagger.json
+
+
+        public const string ReDocRoot = "docs/api/redoc";
+
     }
 }

@@ -6,11 +6,13 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 namespace Spikes.AspNetCore.ODataRouting.Swagger.Filters
 {
     //As per https://stackoverflow.com/questions/70472622/how-to-hide-odata-metadata-controller-in-swagger
-    //
     public class AppSwaggerODataControllerDocumentFilter : IDocumentFilter
     {
         public void Apply(OpenApiDocument swaggerDoc, DocumentFilterContext context)
         {
+            // Maybe depending on which doc?
+            //if (context.DocumentName != openAPI doc){
+
             // remove controller
             foreach (ApiDescription apiDescription in context.ApiDescriptions)
             {
@@ -29,6 +31,7 @@ namespace Spikes.AspNetCore.ODataRouting.Swagger.Filters
                     swaggerDoc.Components.Schemas.Remove(key);
                 }
             }
+            //}
         }
     }
 }

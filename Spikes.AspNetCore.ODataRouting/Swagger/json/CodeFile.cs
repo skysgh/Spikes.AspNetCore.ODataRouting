@@ -38,10 +38,10 @@ namespace Spikes.AspNetCore.ODataRouting.Swagger.json
 
         }
 
-        static void BuildSwaggerGenOptionsBaseRest(SwaggerGenOptions result)
+        static void BuildSwaggerGenOptionsBaseRest(SwaggerGenOptions configuration)
         {
 
-            result.SwaggerDoc(AppAPIConstants.BaseRESTAPIsID,
+            configuration.SwaggerDoc(AppAPIConstants.BaseRESTAPIsID,
                 new OpenApiInfo
                 {
 

@@ -10,6 +10,7 @@ using Microsoft.OpenApi.Models;
 using Spikes.AspNetCore.ODataRouting.Constants;
 using Spikes.AspNetCore.ODataRouting.Conventions;
 using Spikes.AspNetCore.ODataRouting.ModelBuilders;
+using Spikes.AspNetCore.ODataRouting.ReDoc;
 using Spikes.AspNetCore.ODataRouting.Swagger.Filters;
 using Spikes.AspNetCore.ODataRouting.Swagger.json;
 using Spikes.AspNetCore.ODataRouting.Swagger.ui;
@@ -95,13 +96,16 @@ namespace Spikes.AspNetCore.ODataRouting
                     //      ...not the same thing...
                     c.RouteTemplate = 
                     $"{AppAPIConstants.SwaggerJSonRoot}/"+
-                    "{documentname}/swagger.json";
+                    "{documentname}/"+
+                    $"{AppAPIConstants.SwaggerFileName}";
                 });
 
 
                 CheckManifests();
 
-                app.UseSwaggerUI(SwaggerUIConfigurer.XXX);
+                app.UseSwaggerUI(SwaggerUIConfigurer.Configure);
+
+                app.UseReDoc( ReDocUIConfigurer.Configure);
             }
 
 

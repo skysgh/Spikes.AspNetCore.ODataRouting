@@ -1,13 +1,13 @@
 ﻿using Spikes.AspNetCore.ODataRouting.Constants;
 using Swashbuckle.AspNetCore.SwaggerUI;
 
-namespace Spikes.AspNetCore.ODataRouting.Swagger.ui
+namespace Spikes.AspNetCore.ODataRouting.ReDoc
 {
+
     public static class SwaggerUIConfigurer
     {
-        public static void XXX(SwaggerUIOptions c)
+        public static void Configure(SwaggerUIOptions c)
         {
-            //
             //c.RoutePrefix = "docs";
             c.DocumentTitle = "Bugger...";
             //c.EnableDeepLinking = true;
@@ -28,13 +28,11 @@ namespace Spikes.AspNetCore.ODataRouting.Swagger.ui
             };
 
             //Ensure starts with slash:
-            c.SwaggerEndpoint($"{AppAPIConstants.SwaggerJSonRoot}/{AppAPIConstants.BaseRESTAPIsID}/swagger.json", "Base Rest APIs");
-            c.SwaggerEndpoint($"{AppAPIConstants.SwaggerJSonRoot}/{AppAPIConstants.PluginODataAPIsID}/swagger.json", "Base OData APIs");
-            c.SwaggerEndpoint($"{AppAPIConstants.SwaggerJSonRoot}/{AppAPIConstants.BaseFailedODataAPIsID}/swagger.json", "Base OData (Failed) APIs");
-            c.SwaggerEndpoint($"{AppAPIConstants.SwaggerJSonRoot}/{AppAPIConstants.PluginODataAPIsID}/swagger.json", "Plugin OData APIs");
+            c.SwaggerEndpoint($"{AppAPIConstants.SwaggerJSonRoot}/{AppAPIConstants.BaseRESTAPIsID}/{AppAPIConstants.SwaggerFileName}", "Base Rest APIs");
+            c.SwaggerEndpoint($"{AppAPIConstants.SwaggerJSonRoot}/{AppAPIConstants.PluginODataAPIsID}/{AppAPIConstants.SwaggerFileName}", "Base OData APIs");
+            c.SwaggerEndpoint($"{AppAPIConstants.SwaggerJSonRoot}/{AppAPIConstants.BaseFailedODataAPIsID}/{AppAPIConstants.SwaggerFileName}", "Base OData (Failed) APIs");
+            c.SwaggerEndpoint($"{AppAPIConstants.SwaggerJSonRoot}/{AppAPIConstants.PluginODataAPIsID}/{AppAPIConstants.SwaggerFileName}", "Plugin OData APIs");
 
-            var check = c.RoutePrefix;
-            //If set, fails:
             c.RoutePrefix = AppAPIConstants.SwaggerDocRoot;
         }
     }
