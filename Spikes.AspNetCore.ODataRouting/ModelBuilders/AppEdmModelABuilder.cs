@@ -60,7 +60,7 @@ namespace Spikes.AspNetCore.ODataRouting.ModelBuilders
             // b) not acting as an Odata controller (returning odata wrapper in json)
             // c) no Queryability
             // Simply because its not following convention?
-            builder.EntitySet<SomeBaseParentModel>(AppAPIConstants.ODataPrefixWithSlash + "Renamed6");
+            builder.EntitySet<SomeBaseParentModel>(AppAPIConstants.OData.ODataPrefixWithSlash + "Renamed6");
 
             /*07*/
             //Fails.
@@ -70,7 +70,7 @@ namespace Spikes.AspNetCore.ODataRouting.ModelBuilders
             // b) not acting as an Odata controller (returning odata wrapper in json)
             // c) no Queryability
             // Simply because its not following convention?
-            builder.EntitySet<SomeBaseParentModel>(AppAPIConstants.ModuleA + "/" + "Renamed7");
+            builder.EntitySet<SomeBaseParentModel>(AppAPIConstants.Modules.ModuleA.Name + "/" + "Renamed7");
 
             /*08*/
             //Half Works.
@@ -79,7 +79,7 @@ namespace Spikes.AspNetCore.ODataRouting.ModelBuilders
             // b) acting as an Odata controller (returning odata wrapper in json)
             // c) but no Queryability
             // But messy naming (but messy) if using a dash to get around  slash:
-            builder.EntitySet<SomeBaseParentModel>(AppAPIConstants.ModuleA + "-" + "Renamed8");
+            builder.EntitySet<SomeBaseParentModel>(AppAPIConstants.Modules.ModuleA.Name + "-" + "Renamed8");
 
 
 

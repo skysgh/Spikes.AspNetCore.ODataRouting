@@ -51,11 +51,11 @@ namespace Spikes.AspNetCore.ODataRouting
                                 .SetMaxTop(5)
                                 //Add Module/PluginA Routes:
                                 .AddRouteComponents(
-                                     AppAPIConstants.ODataPrefixWithSlash,
+                                     AppAPIConstants.OData.ODataPrefixWithSlash ,
                                     edmModelA)
                                 //Add Module/PluginB Routes:
                                 .AddRouteComponents(
-                                     AppAPIConstants.ODataPrefixWithSlash + "MODULEB/",
+                                     AppAPIConstants.OData.ODataPrefixWithSlash + AppAPIConstants.Modules.ModuleB.Name,
                                     edmModelB)
                                 //Uses AttributeRoutingConvention:
                                 .EnableAttributeRouting = true
@@ -95,9 +95,9 @@ namespace Spikes.AspNetCore.ODataRouting
                     //      Second is template token
                     //      ...not the same thing...
                     c.RouteTemplate = 
-                    $"{AppAPIConstants.SwaggerJSonRoot}/"+
+                    $"{AppAPIConstants.OpenAPI.Spec.FileRoot}/"+
                     "{documentname}/"+
-                    $"{AppAPIConstants.SwaggerFileName}";
+                    $"{AppAPIConstants.OpenAPI.Spec.FileName}";
                 });
 
 

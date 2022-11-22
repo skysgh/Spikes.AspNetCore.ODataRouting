@@ -29,7 +29,7 @@ namespace Spikes.AspNetCore.ODataRouting.Controllers.PluginA.OData
         [HttpGet("Get")]
         [EnableQuery(PageSize = 100)]
         //For Swagger:
-        [ApiExplorerSettings(GroupName = AppAPIConstants.BaseFailedODataAPIsID)]
+        [ApiExplorerSettings(GroupName = AppAPIConstants.OpenAPI.Generation.Areas.ModuleA.OData.Failed.ID)]
         public IActionResult Get()
         {
             return Ok(FakeDataBuilderA.Get());

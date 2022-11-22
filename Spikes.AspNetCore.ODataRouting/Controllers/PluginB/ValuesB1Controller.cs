@@ -31,7 +31,7 @@ namespace Spikes.AspNetCore.ODataRouting.Controllers.PluginA.OData
     // If you forget to add this, on more than two Controllers
     // you'll get an error that the routes ("Get") conflict
     // as they both have no prefix.
-    [Route(AppAPIConstants.ODataPrefixWithSlash + AppAPIConstants.ModuleB +"/" + "RenamedB1")]
+    [Route($"{AppAPIConstants.OData.ODataPrefixWithSlash}{AppAPIConstants.Modules.ModuleB.Name}/RenamedB1")]
     public class ValuesB1Controller : ODataController
     {
 
@@ -40,11 +40,12 @@ namespace Spikes.AspNetCore.ODataRouting.Controllers.PluginA.OData
         /// 
         /// </summary>
         /// <returns></returns>
+        [EnableQuery(PageSize = 100)]
         [HttpGet("")]
         [HttpGet("Get")]
-        [EnableQuery(PageSize = 100)]
+        [HttpGet("$count")]
 
-        [ApiExplorerSettings(GroupName = AppAPIConstants.PluginODataAPIsID)]
+        [ApiExplorerSettings(GroupName = AppAPIConstants.OpenAPI.Generation.Areas.ModuleB.OData.ID)]
         public IActionResult Get()
         {
             return Ok(FakeDataBuilderB.Get());

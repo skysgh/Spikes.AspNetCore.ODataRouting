@@ -16,7 +16,7 @@ namespace Spikes.AspNetCore.ODataRouting.Controllers.PluginA.OData
     // as the route starts with same prefix
     // as Convention used when registereing EDM model
     // But $count doesn't work!
-    [Route(AppAPIConstants.ODataPrefixWithSlash + "Renamed5")]
+    [Route(AppAPIConstants.OData.ODataPrefixWithSlash + "Renamed5")]
     public class ValuesA5Controller : ODataController
     {
 
@@ -29,7 +29,7 @@ namespace Spikes.AspNetCore.ODataRouting.Controllers.PluginA.OData
         [HttpGet("")]
         [HttpGet("Get")]
         //For Swagger:
-        [ApiExplorerSettings(GroupName = AppAPIConstants.BaseODataAPIsID)]
+        [ApiExplorerSettings(GroupName = AppAPIConstants.OpenAPI.Generation.Areas.ModuleA.OData.ID)]
         public IActionResult Get()
         {
             return Ok(FakeDataBuilderA.Get());

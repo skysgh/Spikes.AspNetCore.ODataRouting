@@ -18,10 +18,10 @@ namespace Spikes.AspNetCore.ODataRouting.Controllers.PluginA.OData
     // when model registered.
     // As ODataRouteComponent only affects Convention
     // based, not Attribute based. Whatever that means.
-    [ODataRouteComponent(AppAPIConstants.ODataPrefixWithSlash)]
+    [ODataRouteComponent(AppAPIConstants.OData.ODataPrefixWithSlash)]
     [Route("Renamed4")]
     //For Swagger:
-    [ApiExplorerSettings(GroupName = AppAPIConstants.BaseFailedODataAPIsID)]
+    [ApiExplorerSettings(GroupName = AppAPIConstants.OpenAPI.Generation.Areas.ModuleA.OData.Failed.ID)]
     public class ValuesA4Controller : ODataController
     {
 

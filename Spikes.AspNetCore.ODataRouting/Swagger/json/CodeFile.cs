@@ -41,11 +41,11 @@ namespace Spikes.AspNetCore.ODataRouting.Swagger.json
         static void BuildSwaggerGenOptionsBaseRest(SwaggerGenOptions configuration)
         {
 
-            configuration.SwaggerDoc(AppAPIConstants.BaseRESTAPIsID,
+            configuration.SwaggerDoc(AppAPIConstants.OpenAPI.Generation.Areas.ModuleA.Rest.ID,
                 new OpenApiInfo
                 {
 
-                    Title = AppAPIConstants.BaseRESTAPIsTitle,
+                    Title = AppAPIConstants.OpenAPI.Generation.Areas.ModuleA.Rest.Title,
                     Version = "v1",
                     Description = "The App's standard REST APIs",
                     TermsOfService = new Uri("https://example.com/terms"),
@@ -66,11 +66,11 @@ namespace Spikes.AspNetCore.ODataRouting.Swagger.json
         }
         static void BuildSwaggerGenOptionsBaseOData(SwaggerGenOptions result)
         {
-            result.SwaggerDoc(AppAPIConstants.BaseODataAPIsID, new OpenApiInfo
+            result.SwaggerDoc(AppAPIConstants.OpenAPI.Generation.Areas.ModuleA.OData.ID, new OpenApiInfo
             {
                 Version = "v1",
 
-                Title = AppAPIConstants.BaseODataAPIsTitle,
+                Title = AppAPIConstants.OpenAPI.Generation.Areas.ModuleA.OData.Title,
                 Description = "The Apps Base OData APIs (that work)",
                 TermsOfService = new Uri("https://example.com/terms"),
                 Contact = new OpenApiContact
@@ -87,11 +87,11 @@ namespace Spikes.AspNetCore.ODataRouting.Swagger.json
         }
         static void BuildSwaggerGenOptionsBaseODataFails(SwaggerGenOptions result)
         {
-            result.SwaggerDoc(AppAPIConstants.BaseFailedODataAPIsID, new OpenApiInfo
+            result.SwaggerDoc(AppAPIConstants.OpenAPI.Generation.Areas.ModuleA.OData.Failed.ID, new OpenApiInfo
             {
                 Version = "v1",
 
-                Title = AppAPIConstants.BaseFailedODataAPIsTitle,
+                Title = AppAPIConstants.OpenAPI.Generation.Areas.ModuleA.OData.Failed.Title,
                 Description = "The Apps Base OData APIs (that don't work well)",
                 TermsOfService = new Uri("https://example.com/terms"),
                 Contact = new OpenApiContact
@@ -108,11 +108,11 @@ namespace Spikes.AspNetCore.ODataRouting.Swagger.json
         }
         static void BuildSwaggerGenOptionsPluginOData(SwaggerGenOptions result)
         {
-            result.SwaggerDoc(AppAPIConstants.PluginODataAPIsID, new OpenApiInfo
+            result.SwaggerDoc(AppAPIConstants.OpenAPI.Generation.Areas.ModuleB.OData.ID, new OpenApiInfo
             {
                 Version = "v1",
 
-                Title = AppAPIConstants.PluginODataAPIsTitle,
+                Title = AppAPIConstants.OpenAPI.Generation.Areas.ModuleB.OData.Title,
                 Description = "The Apps Plugin OData APIs (that work)",
                 TermsOfService = new Uri("https://example.com/terms"),
                 Contact = new OpenApiContact

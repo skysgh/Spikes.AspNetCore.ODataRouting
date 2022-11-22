@@ -54,7 +54,7 @@ namespace Spikes.AspNetCore.ODataRouting.Controllers.PluginA.REST
         /// </devnotes>
         [EnableQuery(PageSize = 100)]
         [HttpGet(Name = "GetWeatherForecast")]
-        [ApiExplorerSettings(GroupName = AppAPIConstants.BaseRESTAPIsID)]
+        [ApiExplorerSettings(GroupName = AppAPIConstants.OpenAPI.Generation.Areas.ModuleA.Rest.ID)]
         public IEnumerable<WeatherForecast> Get()
         {
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast

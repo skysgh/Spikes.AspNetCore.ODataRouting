@@ -23,15 +23,15 @@ namespace Spikes.AspNetCore.ODataRouting.Swagger.ui
             //};
 
             //Ensure starts with slash:
-            c.SpecUrl = $"{AppAPIConstants.SwaggerJSonRoot}/{AppAPIConstants.BaseRESTAPIsID}/{AppAPIConstants.SwaggerFileName}";
-            //c.SpecUrl = $"{AppAPIConstants.SwaggerJSonRoot}/{AppAPIConstants.PluginODataAPIsID}/{AppAPIConstants.SwaggerFileName}";
-            //c.SpecUrl = $"{AppAPIConstants.SwaggerJSonRoot}/{AppAPIConstants.BaseFailedODataAPIsID}/{AppAPIConstants.SwaggerFileName}";
-            //c.SpecUrl = $"{AppAPIConstants.SwaggerJSonRoot}/{AppAPIConstants.PluginODataAPIsID}/{AppAPIConstants.SwaggerFileName}";
+            c.SpecUrl = $"{AppAPIConstants.OpenAPI.Spec.FileRoot}/{AppAPIConstants.OpenAPI.Generation.Areas.ModuleA.Rest.ID}/{AppAPIConstants.OpenAPI.Spec.FileName}";
+            //c.SpecUrl = $"{AppAPIConstants.OpenAPI.SwaggerJSonRoot}/{AppAPIConstants.PluginODataAPIsID}/{AppAPIConstants.OpenAPIFileName}";
+            //c.SpecUrl = $"{AppAPIConstants.OpenAPI.SwaggerJSonRoot}/{AppAPIConstants.BaseFailedODataAPIsID}/{AppAPIConstants.OpenAPIFileName}";
+            //c.SpecUrl = $"{AppAPIConstants.OpenAPI.SwaggerJSonRoot}/{AppAPIConstants.PluginODataAPIsID}/{AppAPIConstants.OpenAPIFileName}";
 
             //Several configuration options available:
             //c.ConfigObject.DisableSearch = true;
             //etc.
-            c.RoutePrefix = AppAPIConstants.ReDocRoot;
+            c.RoutePrefix = AppAPIConstants.OpenAPI.UI.ReDoc.ReDocRoot;
         }
 
     }

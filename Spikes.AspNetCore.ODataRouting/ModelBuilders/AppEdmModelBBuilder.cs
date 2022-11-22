@@ -14,7 +14,7 @@ namespace Spikes.AspNetCore.ODataRouting.ModelBuilders
 
             /*01*/
             // Works, follows convention of part-part == controller name prefix 
-            builder.EntitySet<SomeBaseParentModel>("ValuesB1");
+            builder.EntitySet<SomeBaseParentModel>("RenamedB1");
 
             return builder.GetEdmModel();
 

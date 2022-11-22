@@ -28,12 +28,13 @@ namespace Spikes.AspNetCore.ODataRouting.ReDoc
             };
 
             //Ensure starts with slash:
-            c.SwaggerEndpoint($"{AppAPIConstants.SwaggerJSonRoot}/{AppAPIConstants.BaseRESTAPIsID}/{AppAPIConstants.SwaggerFileName}", "Base Rest APIs");
-            c.SwaggerEndpoint($"{AppAPIConstants.SwaggerJSonRoot}/{AppAPIConstants.PluginODataAPIsID}/{AppAPIConstants.SwaggerFileName}", "Base OData APIs");
-            c.SwaggerEndpoint($"{AppAPIConstants.SwaggerJSonRoot}/{AppAPIConstants.BaseFailedODataAPIsID}/{AppAPIConstants.SwaggerFileName}", "Base OData (Failed) APIs");
-            c.SwaggerEndpoint($"{AppAPIConstants.SwaggerJSonRoot}/{AppAPIConstants.PluginODataAPIsID}/{AppAPIConstants.SwaggerFileName}", "Plugin OData APIs");
+            c.SwaggerEndpoint($"{AppAPIConstants.OpenAPI.Spec.FileRoot}/{AppAPIConstants.OpenAPI.Generation.Areas.ModuleA.Rest.ID}/{AppAPIConstants.OpenAPI.Spec.FileName}", "Base Rest APIs");
+            c.SwaggerEndpoint($"{AppAPIConstants.OpenAPI.Spec.FileRoot}/{AppAPIConstants.OpenAPI.Generation.Areas.ModuleA.OData.ID}/{AppAPIConstants.OpenAPI.Spec.FileName}", "Base OData APIs");
+            c.SwaggerEndpoint($"{AppAPIConstants.OpenAPI.Spec.FileRoot}/{AppAPIConstants.OpenAPI.Generation.Areas.ModuleA.OData.Failed.ID}/{AppAPIConstants.OpenAPI.Spec.FileName}", "Base OData (Failed) APIs");
 
-            c.RoutePrefix = AppAPIConstants.SwaggerDocRoot;
+            c.SwaggerEndpoint($"{AppAPIConstants.OpenAPI.Spec.FileRoot}/{AppAPIConstants.OpenAPI.Generation.Areas.ModuleB.OData.ID}/{AppAPIConstants.OpenAPI.Spec.FileName}", "Plugin OData APIs");
+
+            c.RoutePrefix = AppAPIConstants.OpenAPI.UI.Swagger.SwaggerDocRoot;
         }
     }
 }

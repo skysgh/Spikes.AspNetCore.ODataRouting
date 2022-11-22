@@ -57,7 +57,7 @@ namespace Spikes.AspNetCore.ODataRouting.Controllers.PluginA.OData
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         //For Swagger:
-        [ApiExplorerSettings(GroupName=AppAPIConstants.BaseODataAPIsID)]
+        [ApiExplorerSettings(GroupName= AppAPIConstants.OpenAPI.Generation.Areas.ModuleA.OData.ID)]
         public IActionResult Get()
         {
             return Ok(FakeDataBuilderA.Get());
