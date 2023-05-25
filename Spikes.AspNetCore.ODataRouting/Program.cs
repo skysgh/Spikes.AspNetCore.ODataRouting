@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc.Controllers;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.OData;
 using Microsoft.AspNetCore.OData.Batch;
+using Microsoft.AspNetCore.OData.Routing;
 using Microsoft.AspNetCore.OData.Routing.Conventions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
@@ -11,6 +13,7 @@ using Spikes.AspNetCore.ODataRouting.Constants;
 using Spikes.AspNetCore.ODataRouting.Conventions;
 using Spikes.AspNetCore.ODataRouting.ModelBuilders;
 using Spikes.AspNetCore.ODataRouting.ReDoc;
+using Spikes.AspNetCore.ODataRouting.Reset;
 using Spikes.AspNetCore.ODataRouting.Swagger.Filters;
 using Spikes.AspNetCore.ODataRouting.Swagger.json;
 using Spikes.AspNetCore.ODataRouting.Swagger.ui;
@@ -21,29 +24,39 @@ using System.Reflection.Emit;
 
 namespace Spikes.AspNetCore.ODataRouting
 {
+    public static class Singletons { 
+        public static WebApplicationBuilder Builder { get; set; }
+    }
+
     public class Program
     {
+
         public static void Main(string[] args)
         {
-            var builder = WebApplication.CreateBuilder(args);
-
+            WebApplicationBuilder webApplicationBuilder = 
+                WebApplication.CreateBuilder(args);
             // Add services to the container.
 
             // Note how we us a Builder we created to 
             // offload the assembly of the edmModel:
             var edmModelA = AppEdmModelABuilder.BuildModel();
-
             var edmModelB = AppEdmModelBBuilder.BuildModel();
 
-            // Note we are adding Odata, 
+            // Hack save to get access to it later in 
+            // the 'upload' controller:
+            Singletons.Builder = webApplicationBuilder;
+
+            // Note we are adding Odata,
             // nothins special going on
             // bar putting using the Convention 
             // of having a prefix for API controllers:
-            var mvcBuilder = builder.Services
+            var mvcBuilder = webApplicationBuilder
+                            .Services
                             .AddControllers()
                             .AddOData(
                                 opt =>
-                                opt.Count()
+                                opt
+                                .Count()
                                 .Filter()
                                 .Expand()
                                 .Select()
@@ -51,25 +64,27 @@ namespace Spikes.AspNetCore.ODataRouting
                                 .SetMaxTop(5)
                                 //Add Module/PluginA Routes:
                                 .AddRouteComponents(
-                                     AppAPIConstants.OData.ODataPrefixWithSlash ,
-                                    edmModelA)
+                                     AppAPIConstants.Modules.ModuleA.ODataPrefix,
+                                     edmModelA)
                                 //Add Module/PluginB Routes:
-                                .AddRouteComponents(
-                                     AppAPIConstants.OData.ODataPrefixWithSlash + AppAPIConstants.Modules.ModuleB.Name,
-                                    edmModelB)
+                                //.AddRouteComponents(
+                                //   AppAPIConstants.Modules.ModuleB.ODataPrefix,
+                                //   edmModelB)
                                 //Uses AttributeRoutingConvention:
                                 .EnableAttributeRouting = true
-                )
-                            ;
-
-
-
+                                );
 
             var check = 
-                builder.Services.Where(x=>x.ServiceType.Name.Contains("OData")).ToArray();
+                webApplicationBuilder
+                .Services
+                .Where(x=>
+                    x
+                    .ServiceType
+                    .Name
+                    .Contains("OData"))
+                    .ToArray();
 
-
-            builder.Services.AddEndpointsApiExplorer();
+            webApplicationBuilder.Services.AddEndpointsApiExplorer();
 
             // Note putting in routes to 
             // http://localhost/$odata
@@ -80,17 +95,27 @@ namespace Spikes.AspNetCore.ODataRouting
             // Learn more about configuring
             // Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
-            builder.Services
+            webApplicationBuilder.Services
                 .AddSwaggerGen(
                 SwaggerConfigurer.BuildSwaggerGenOptions);
 
-            var app = builder.Build();
+            //Register the path resetter:
+            webApplicationBuilder.Services.AddSingleton<IActionDescriptorChangeProvider>(AppActionDescriptorChangeProvider.Instance);
+            //builder.Services.AddSingleton(AppActionDescriptorChangeProvider.Instance);
 
+            var app = webApplicationBuilder.Build();
+
+            ServiceProvider s = (ServiceProvider)app.Services;
+            
+            //Doesn't work:
+            //var cxxx = app.Services.GetService<IMvcBuilder>();
+            
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger(c=>
                 {
+                    
                     //NOTE: First {} is dynamic
                     //      Second is template token
                     //      ...not the same thing...
@@ -125,10 +150,16 @@ namespace Spikes.AspNetCore.ODataRouting
             //configuration.MapODataServiceRoute("odata", "odata", model, new DefaultODataPathHandler(), conventions);
 
             app.MapControllers();
+
+
             //app.UseEndpoints(endpoints =>
             //{
             //    endpoints.MapControllers();
             //});
+
+            var routeCollection = app.Services.GetService<IRouteCollection>();
+            //var oDataPathHandler = app.Services.GetService<IOdata>();
+
 
             app.Run();
         }

@@ -19,8 +19,7 @@ namespace Spikes.AspNetCore.ODataRouting.Controllers.PluginA.OData
     //which adds a slash ...
     //so it fails, even if matching how it's
     // registered in the EDM model.
-    [Route(AppAPIConstants.OData.ODataPrefixWithSlash + AppAPIConstants.Modules.ModuleA.Name  + "/" + "Renamed7")]
-    //For Swagger:
+    [Route($"{AppAPIConstants.Modules.ModuleA.ODataPrefix}\\Renamed7")]    //For Swagger:
     [ApiExplorerSettings(GroupName = AppAPIConstants.OpenAPI.Generation.Areas.ModuleA.OData.ID)]
     public class ValuesA7Controller : ODataController
     {

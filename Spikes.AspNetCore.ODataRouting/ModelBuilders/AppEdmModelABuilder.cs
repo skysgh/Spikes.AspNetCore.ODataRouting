@@ -60,7 +60,7 @@ namespace Spikes.AspNetCore.ODataRouting.ModelBuilders
             // b) not acting as an Odata controller (returning odata wrapper in json)
             // c) no Queryability
             // Simply because its not following convention?
-            builder.EntitySet<SomeBaseParentModel>(AppAPIConstants.OData.ODataPrefixWithSlash + "Renamed6");
+            builder.EntitySet<SomeBaseParentModel>($"{AppAPIConstants.Modules.ModuleA.ODataPrefix}/Renamed6");
 
             /*07*/
             //Fails.

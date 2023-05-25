@@ -16,7 +16,7 @@ namespace Spikes.AspNetCore.ODataRouting.Controllers.PluginA.OData
     // as the route starts with same prefix
     // as Convention used when registereing EDM model
     // But $count doesn't work!
-    [Route(AppAPIConstants.OData.ODataPrefixWithSlash + "Renamed5")]
+    [Route($"{AppAPIConstants.Modules.ModuleA.ODataPrefix}\\Renamed5")]
     public class ValuesA5Controller : ODataController
     {
 

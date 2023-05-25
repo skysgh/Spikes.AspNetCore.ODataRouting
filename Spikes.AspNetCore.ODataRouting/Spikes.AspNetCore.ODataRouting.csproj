@@ -23,10 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="NewFolder1\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="wwwroot\swagger\ui\CustomStyleSheet.css" />
   </ItemGroup>
 

@@ -17,7 +17,8 @@ namespace Spikes.AspNetCore.ODataRouting.Controllers.PluginA.OData
     // Works as long as we don't add a slash (section)
     // by using a dash instead.
     // pretty ugly.
-    [Route(AppAPIConstants.OData.ODataPrefixWithSlash + AppAPIConstants.Modules.ModuleA.Name + "-" + "Renamed8")]
+
+    [Route($"{AppAPIConstants.Modules.ModuleA.ODataPrefix}-Renamed8")]
     //For Swagger:
     [ApiExplorerSettings(GroupName = AppAPIConstants.OpenAPI.Generation.Areas.ModuleA.OData.ID)]
     public class ValuesA8Controller : ODataController

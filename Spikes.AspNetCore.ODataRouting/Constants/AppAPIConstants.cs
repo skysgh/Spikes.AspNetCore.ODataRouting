@@ -7,8 +7,7 @@
             //Note that we're ending it with a slash to 
             //make concatenantion work 
             // with subsequent Module names below:
-            public const string ODataPrefixWithOutSlash = "api/OData/v{version}";
-            public const string ODataPrefixWithSlash = ODataPrefixWithOutSlash + "/";
+            public const string ODataPrefix = "api/OData/v{version}";
         }
 
         public class OpenAPI
@@ -91,6 +90,8 @@
             public class ModuleA
             {
                 public const string Name = "ModuleA";
+                public const string ODataPrefix = $"api/odata/{Name}/v{{version}}";
+                //$"{OData.ODataPrefix}/{Name}";
                 public class Controllers {
                     public static string Controller1 = null;
                 }
@@ -100,6 +101,8 @@
             public class ModuleB
             {
                 public const string Name = "ModuleB";
+                public const string ODataPrefix = $"api/odata/{Name}/v{{version}}";
+                    //$"{OData.ODataPrefix}/{Name}";
 
 
             }

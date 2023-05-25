@@ -48,7 +48,7 @@ namespace Spikes.AspNetCore.ODataRouting.Swagger.json
                     Title = AppAPIConstants.OpenAPI.Generation.Areas.ModuleA.Rest.Title,
                     Version = "v1",
                     Description = "The App's standard REST APIs",
-                    TermsOfService = new Uri("https://example.com/terms"),
+                    TermsOfService = new Uri("https://example/com/terms"),
                     Contact = new OpenApiContact
                     {
                         Name = "Example Contact",
